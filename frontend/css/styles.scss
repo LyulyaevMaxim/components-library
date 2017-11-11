@@ -1,0 +1,27 @@
+@import "helpers/postcss-reset/mobile.css";
+@import "helpers/variables.scss";
+@import "helpers/fonts.scss";
+@import "helpers/base.scss";
+
+@import "../components/buttons/buttons.scss";
+// @import "../components/content/breadcrumbs/breadcrumbs.scss";
+// @import "../components/content/checkbox/checkbox.scss";
+// @import "../components/content/pagination/pagination.scss";
+// @import "../components/content/radio-block/radio-block.scss";
+// @import "../components/content/rating/rating.scss";
+// @import "../components/content/items/item.scss";
+// @import "../components/content/items/items-section.scss";
+// @import "../components/content/select/select.scss";
+// @import "../components/content/input/input.scss";
+// @import "../components/content/buttons/buttons.scss";
+
+// /**************BEGIN: ФОРМЫ ************************/
+// @import "../components/popup/light-modal.css";
+// @import "../components/popup/custom-styles-modal.scss";
+// @import "../components/popup/login/login.scss";
+// /***************END: ФОРМЫ *****************/
+
+// /**************BEGIN: СЛАЙДЕРЫ ************************/
+// @import "../components/sliders/full-slider/full-slider.scss";
+// @import "../components/sliders/product-slider/product-slider.scss";
+// /***************END: СЛАЙДЕРЫ *****************/

@@ -1,0 +1,202 @@
+/* https://developer.mozilla.org/en/docs/Web/CSS/box-shadow
+  box-shadow: [inset?] [top] [left] [blur] [size] [color];
+
+  - задаём blurs на 0, чтобы получить сплошную заливку
+  - добавьте inset, если нужно, чтобы тень находилась внутри элемента
+  - анимирование inset shadow при наведении подобно заполнению элемента с сторон, указанных вами 
+  - чтобы сменить сторону на противоположную (top -> bottom) задайте отрицительное значение */
+
+.shadowFill,
+.shadowClose,
+.shadowUp,
+.shadowSlide,
+.shadowAngle {
+  background: none;
+  border: 2px solid;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 1em 2em;
+  transition: 0.25s;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+  }
+}
+
+.shadowFill {
+  color: #a972cb;
+
+  &:hover,
+  &:focus {
+    border-color: #cb72aa;
+    box-shadow: inset 0 0 0 2em #cb72aa;
+  }
+}
+
+// используем несколько теней: 1 слева, 1 справа
+.shadowClose {
+  color: #ff7f82;
+
+  &:hover,
+  &:focus {
+    box-shadow: inset -3.5em 0 0 0 #ffdc7f, inset 3.5em 0 0 0 #ffdc7f;
+    border-color: #ffdc7f;
+  }
+}
+
+.shadowUp {
+  color: #e4cb58;
+
+  &:hover,
+  &:focus {
+    box-shadow: inset 0 -3.25em 0 0 #94e458;
+    border-color: #94e458;
+  }
+}
+
+.shadowSlide {
+  color: #8fc866;
+
+  &:hover,
+  &:focus {
+    box-shadow: inset 6.5em 0 0 0 #66c887;
+    border-color: #66c887;
+  }
+}
+
+.shadowAngle {
+  color: #19bc8b;
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 0 0 #1973bc, inset 6em 3.5em 0 0 #1973bc;
+    border-color: #1973bc;
+  }
+}
+
+.gradient-border {
+  border: none;
+  $borderWidth: 3px;
+  background: #1d1f20;
+  position: relative;
+  border-radius: $borderWidth;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5em;
+  padding: 1em 2em;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: calc(-1 * $borderWidth);
+    left: calc(-1 * $borderWidth);
+    height: calc(100% + $borderWidth * 2);
+    width: calc(100% + $borderWidth * 2);
+    background: linear-gradient(
+      60deg,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad,
+      #07b39b,
+      #6fba82
+    );
+    border-radius: calc(2 * $borderWidth);
+    z-index: -1;
+    animation: animatedgradient 2s ease alternate infinite;
+    background-size: 300% 300%;
+  }
+}
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.button-mask-1,
+.button-mask-2,
+.button-mask-3 {
+  position: relative;
+  margin: 0.5em;
+  overflow: hidden;
+  transition: 0.5s;
+  width: 100px;
+  height: 50px;
+  border: 1px solid #000;
+  &::before {
+    content: attr(data-title);
+    display: block;
+    position: absolute;
+    color: #000;
+    text-align: center;
+    width: 101%;
+    overflow: hidden;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  button {
+    width: 101%;
+    height: 100%;
+    background: #000;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+.button-mask-1 button {
+  background: #000;
+  mask: url(../img/sprite/button-mask--1.png);
+  mask-size: 2300% 100%;
+  border: none;
+  color: #fff;
+  animation: ani2 0.7s steps(22) forwards;
+  &:hover {
+    animation: ani 0.7s steps(22) forwards;
+  }
+}
+.button-mask-2 button {
+  background: #000;
+  mask: url(../img/sprite/button-mask--2.png);
+  mask-size: 3000% 100%;
+  border: none;
+  color: #fff;
+  animation: ani2 0.7s steps(29) forwards;
+  &:hover {
+    animation: ani 0.7s steps(29) forwards;
+  }
+}
+.button-mask-3 button {
+  mask: url(../img/sprite/button-mask--3.png);
+  mask-size: 7100% 100%;
+  animation: ani2 0.7s steps(70) forwards;
+  &:hover {
+    animation: ani 0.7s steps(70) forwards;
+  }
+}
+@keyframes ani {
+  from {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+  to {
+    mask-position: 100% 0;
+  }
+}
+@keyframes ani2 {
+  from {
+    mask-position: 100% 0;
+  }
+  to {
+    mask-position: 0 0;
+  }
+}
