@@ -1,2 +1,2 @@
 ## Демонстрация
-https://maxim-buslaev.github.io/components-library/public/
+https://lyulyaevmaxim.github.io/components-library/public/
